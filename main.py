@@ -81,7 +81,7 @@ def orphanChildTags():
                 ind.append(index)
                 result2 = re.findall('\S*:DER:\S*', t)
                 if len(result2) != 0:
-                    print("From " + docFile["SRS"])
+                    print("From " + docFile[tag])
                     print("This tag has no parent: ", result2[0])
 
 
