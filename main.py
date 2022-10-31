@@ -64,8 +64,17 @@ def GetChildTags():
 
 docRelationList = list(docRelation.values())
 docRelationSet = set(docRelationList)
-uniqueList = (list(docRelationSet))
-print("Unique List: ", uniqueList, "\n")
+uniqueList = (list(docRelationSet))  # a new set of list is created based on the tags uniqueness
+print("Unique List: ", uniqueList)
+
+uniqueList.remove("PRS")
+uniqueList.remove("HRS")
+uniqueList.remove("SVAL")
+uniqueList.remove("UNIT")
+uniqueList.remove("HTP")
+
+docRelationList = tuple(uniqueList)
+print("After removing keys: ", docRelationList, "\n")
 
 
 def validTags():
@@ -78,11 +87,11 @@ def validTags():
                 ind.append(index)
                 y = re.findall('\s\[.+\]\s', t)
                 if len(y) != 0:
-                    valid = y not in uniqueList
+                    valid = y not in docRelationList
                     print(valid, y[0])  # prints True
                 elif len(y) == 0:
-                    notValid = y in uniqueList
-                    print(notValid, uniqueList)  # prints False
+                    notValid = y in docRelationList
+                    print(notValid, docRelationList)  # prints False
                     # elInSet2 = uniqueList not in textList
                     # print(elInSet2)
         # for x in textList:
