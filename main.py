@@ -67,9 +67,9 @@ docRelationList = list(docRelation.values())
 docRelationSet = set(docRelationList)
 uniqueList = (list(docRelationSet))  # a new set of list is created based on the tags uniqueness
 print("Unique List: ", uniqueList, '\n')
-uniqueList.remove("HTP")
-docRelationList = tuple(uniqueList)
-print("After removing Parent Keys: ", docRelationList, "\n")
+# uniqueList.remove("HTP")
+# docRelationList = tuple(uniqueList)
+# print("After removing Parent Keys: ", docRelationList, "\n")
 
 
 def validTags():
