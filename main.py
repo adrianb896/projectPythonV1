@@ -61,20 +61,15 @@ def GetChildTags():
                 if len(y) != 0:
                     print(y[0])
 
-
+#print(docRelation)
 docRelationList = list(docRelation.values())
+#print(docRelationList)
 docRelationSet = set(docRelationList)
 uniqueList = (list(docRelationSet))  # a new set of list is created based on the tags uniqueness
-print("Unique List: ", uniqueList)
-
-uniqueList.remove("PRS")
-uniqueList.remove("HRS")
-uniqueList.remove("SVAL")
-uniqueList.remove("UNIT")
+print("Unique List: ", uniqueList, '\n')
 uniqueList.remove("HTP")
-
 docRelationList = tuple(uniqueList)
-print("After removing keys: ", docRelationList, "\n")
+print("After removing Parent Keys: ", docRelationList, "\n")
 
 
 def validTags():
@@ -82,20 +77,22 @@ def validTags():
         textList = GetText(filePath + docFile[tag])
         index = 0
         ind = []
+        # for x in uniqueList:
+        #     print(x)
         for t in textList:
             if re.search('.*:' + re.escape(tag) + ':', t):  # conduct regular expression search
                 ind.append(index)
                 y = re.findall('\s\[.+\]\s', t)
                 if len(y) != 0:
-                    valid = y not in docRelationList
+                    valid = y not in uniqueList
                     print(valid, y[0])  # prints True
                 elif len(y) == 0:
-                    notValid = y in docRelationList
-                    print(notValid, docRelationList)  # prints False
-                    # elInSet2 = uniqueList not in textList
-                    # print(elInSet2)
+                    notValid = y in uniqueList
+                    print(notValid, uniqueList)  # prints False
+                    #elInSet2 = uniqueList not in textList
+                    #print(elInSet2)
         # for x in textList:
-        #     if x in uniqueList:
+        #    if x in uniqueList:
         #         print("Valid")
         #     elif x not in uniqueList:
         #         print("Not valid")
