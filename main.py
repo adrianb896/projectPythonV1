@@ -76,14 +76,13 @@ def validTags():
         for t in textList:
             if re.search('.*:' + re.escape(tag) + ':', t):  # conduct regular expression search
                 ind.append(index)
-                tt = t
                 y = re.findall('\s\[.+\]\s', t)
                 if len(y) != 0:
                     valid = y not in uniqueList
-                    print(valid, y[0])
+                    print(valid, y[0])  # prints True
                 elif len(y) == 0:
-                    notValid = uniqueList in y
-                    print(notValid, uniqueList)
+                    notValid = y in uniqueList
+                    print(notValid, uniqueList)  # prints False
                     # elInSet2 = uniqueList not in textList
                     # print(elInSet2)
         # for x in textList:
